@@ -38,11 +38,42 @@
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ryF-Uh-Ncs">
+                                <rect key="frame" x="30" y="200" width="315" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="R1p-rI-QbJ">
+                                <rect key="frame" x="30" y="260" width="315" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gca-oD-ARg">
+                                <rect key="frame" x="290" y="318" width="55" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Lmp-NN-pGQ"/>
+                                    <constraint firstAttribute="width" constant="55" id="Vcc-h2-CF0"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Login">
+                                    <color key="titleColor" red="0.42691582980450188" green="0.19163454056015805" blue="0.83038050679999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.83038050677492214" green="0.63427071277731006" blue="0.4594465136305993" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="R1p-rI-QbJ" firstAttribute="top" secondItem="ryF-Uh-Ncs" secondAttribute="bottom" constant="30" id="4hZ-AL-Dkz"/>
+                            <constraint firstItem="Gca-oD-ARg" firstAttribute="top" secondItem="R1p-rI-QbJ" secondAttribute="bottom" constant="28" id="8U4-GP-Auh"/>
+                            <constraint firstItem="ryF-Uh-Ncs" firstAttribute="top" secondItem="AJR-U5-vK9" secondAttribute="bottom" constant="30" id="FRP-Ry-hq9"/>
+                            <constraint firstAttribute="trailing" secondItem="R1p-rI-QbJ" secondAttribute="trailing" constant="30" id="HrS-5b-srO"/>
+                            <constraint firstAttribute="trailing" secondItem="Gca-oD-ARg" secondAttribute="trailing" constant="30" id="WH2-Z9-dpZ"/>
                             <constraint firstItem="AJR-U5-vK9" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="WyV-h7-vRe"/>
                             <constraint firstItem="AJR-U5-vK9" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="79" id="bsD-Vc-zJe"/>
+                            <constraint firstItem="ryF-Uh-Ncs" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="iSi-eH-l8u"/>
+                            <constraint firstAttribute="trailing" secondItem="ryF-Uh-Ncs" secondAttribute="trailing" constant="30" id="kCZ-60-ih7"/>
+                            <constraint firstItem="R1p-rI-QbJ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="trt-Mc-dMk"/>
                         </constraints>
                     </view>
                 </viewController>
