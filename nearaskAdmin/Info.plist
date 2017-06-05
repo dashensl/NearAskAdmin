@@ -2,6 +2,21 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>UserList</key>
+	<array>
+		<dict>
+			<key>username</key>
+			<string>addison@aporigin.com</string>
+			<key>password</key>
+			<string>654321</string>
+		</dict>
+		<dict>
+			<key>username</key>
+			<string>shiling@aporigin.com</string>
+			<key>password</key>
+			<string>123456</string>
+		</dict>
+	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
