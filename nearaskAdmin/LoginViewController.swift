@@ -12,7 +12,7 @@ class LoginViewController: UIViewController {
 
     @IBOutlet weak var usernameTF: UITextField!
     @IBOutlet weak var passwordTF: UITextField!
-    @IBOutlet weak var loginBtn: UIButton!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -24,12 +24,13 @@ class LoginViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    @IBAction func loginAction(_ sender: Any) {
-        if (validateUserLogin()) {
-            self.renderAlert(title: "sweet", message: "login successfully !!")
-        } else {
-            self.renderAlert(title: "fuck", message: "login failed !!")
+    
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        if identifier == "loginSegue" {
+            print("shouldPerformSegue loginSegue")
+            return validateUserLogin();
         }
+        return true;
     }
     
     func validateUserLogin() -> Bool{
@@ -44,6 +45,7 @@ class LoginViewController: UIViewController {
                 }
             }
         }
+        self.renderAlert(title: "oops!", message: "login failed")
         return false
     }
     func renderAlert(title: String, message: String) {

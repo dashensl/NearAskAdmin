@@ -38,15 +38,15 @@
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ryF-Uh-Ncs">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="shiling@aporigin.com" borderStyle="roundedRect" placeholder="username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ryF-Uh-Ncs">
                                 <rect key="frame" x="30" y="200" width="315" height="30"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="R1p-rI-QbJ">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="123456" borderStyle="roundedRect" placeholder="password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="R1p-rI-QbJ">
                                 <rect key="frame" x="30" y="260" width="315" height="30"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -61,7 +61,7 @@
                                     <color key="titleColor" red="0.42691582980450188" green="0.19163454056015805" blue="0.83038050679999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="loginAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ktw-L5-PxC"/>
+                                    <segue destination="ypp-xg-fV2" kind="show" identifier="loginSegue" id="8e5-L2-IRp"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -80,14 +80,69 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="loginBtn" destination="Gca-oD-ARg" id="WEw-q9-ueX"/>
                         <outlet property="passwordTF" destination="R1p-rI-QbJ" id="III-rv-4Dj"/>
                         <outlet property="usernameTF" destination="ryF-Uh-Ncs" id="iLE-go-HPp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="159" y="102"/>
+            <point key="canvasLocation" x="-1777" y="197"/>
+        </scene>
+        <!--Post List-->
+        <scene sceneID="Ati-Ya-Wqi">
+            <objects>
+                <tableViewController id="VD4-TM-DNP" customClass="PostsTableViewController" customModule="nearaskAdmin" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="257" sectionHeaderHeight="28" sectionFooterHeight="28" id="i6M-kW-B74">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="postcell" rowHeight="257" id="aw7-78-ZKe">
+                                <rect key="frame" x="0.0" y="28" width="375" height="257"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aw7-78-ZKe" id="CQ7-8m-wsz">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="257"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="LaunchLogo" translatesAutoresizingMaskIntoConstraints="NO" id="rMU-JZ-8ae">
+                                            <rect key="frame" x="16" y="8" width="258" height="261"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="VD4-TM-DNP" id="68B-EG-etn"/>
+                            <outlet property="delegate" destination="VD4-TM-DNP" id="ibA-So-aSZ"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Post List" id="q9d-FF-udq"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YgB-7X-4iW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-188" y="196.55172413793105"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="cdC-rI-TYb">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ypp-xg-fV2" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="NKF-P1-syU">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="VD4-TM-DNP" kind="relationship" relationship="rootViewController" id="dtm-tM-0co"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZJ8-vh-G9b" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-957.60000000000002" y="197.45127436281859"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="LaunchLogo" width="88" height="88"/>
+    </resources>
 </document>

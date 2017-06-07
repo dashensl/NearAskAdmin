@@ -14,6 +14,8 @@
 		4C1C7A001EE5436500897B3A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C1C79FE1EE5436500897B3A /* LaunchScreen.storyboard */; };
 		4C1C7A0B1EE5436600897B3A /* nearaskAdminTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1C7A0A1EE5436600897B3A /* nearaskAdminTests.swift */; };
 		4C1C7A161EE5436600897B3A /* nearaskAdminUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1C7A151EE5436600897B3A /* nearaskAdminUITests.swift */; };
+		4C9B640E1EE5612300662C7A /* PostsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9B640D1EE5612300662C7A /* PostsTableViewController.swift */; };
+		4CF8EBC81EE65E5D00694E76 /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF8EBC71EE65E5D00694E76 /* PostModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +49,8 @@
 		4C1C7A111EE5436600897B3A /* nearaskAdminUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = nearaskAdminUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C1C7A151EE5436600897B3A /* nearaskAdminUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = nearaskAdminUITests.swift; sourceTree = "<group>"; };
 		4C1C7A171EE5436600897B3A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4C9B640D1EE5612300662C7A /* PostsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostsTableViewController.swift; sourceTree = "<group>"; };
+		4CF8EBC71EE65E5D00694E76 /* PostModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,11 +102,13 @@
 			isa = PBXGroup;
 			children = (
 				4C1C79F51EE5436500897B3A /* AppDelegate.swift */,
+				4C9B640D1EE5612300662C7A /* PostsTableViewController.swift */,
 				4C1C79F71EE5436500897B3A /* LoginViewController.swift */,
 				4C1C79F91EE5436500897B3A /* Main.storyboard */,
 				4C1C79FC1EE5436500897B3A /* Assets.xcassets */,
 				4C1C79FE1EE5436500897B3A /* LaunchScreen.storyboard */,
 				4C1C7A011EE5436500897B3A /* Info.plist */,
+				4CF8EBC71EE65E5D00694E76 /* PostModel.swift */,
 			);
 			path = nearaskAdmin;
 			sourceTree = "<group>";
@@ -263,6 +269,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C1C79F81EE5436500897B3A /* LoginViewController.swift in Sources */,
+				4CF8EBC81EE65E5D00694E76 /* PostModel.swift in Sources */,
+				4C9B640E1EE5612300662C7A /* PostsTableViewController.swift in Sources */,
 				4C1C79F61EE5436500897B3A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
