@@ -10,13 +10,15 @@ import Foundation
 
 
 class PostModel {
-    let username: String
-    let firsName: String
-    let lastName: String
+    let title: String
+    let formattedPrice: String
+    let description: String
+    let userUpdatedAt: String
     
-    init (un: String, fn: String, ln: String) {
-        self.username = un
-        self.firsName = fn
-        self.lastName = ln
+    init (title: String, formattedPrice: String, description: String, userUpdatedAt: String) {
+        self.title = title
+        self.formattedPrice = formattedPrice
+        self.description = description
+        self.userUpdatedAt = userUpdatedAt
     }
 }
