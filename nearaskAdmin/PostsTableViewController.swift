@@ -18,7 +18,7 @@ class PostsTableViewController: UITableViewController {
         self.dataSource = [PostModel]()
         self.tableView.delegate = self
         self.fetchFeeds()
-    
+        
         // Uncomment the following line to preserve selection between presentations
 //         self.clearsSelectionOnViewWillAppear = false
 
@@ -103,12 +103,13 @@ class PostsTableViewController: UITableViewController {
         cell.titleLabel.text = currentpost.title
         cell.locationLabel.text = currentpost.location.name
         cell.timeFromNowLabel.text = currentpost.lastUpdateAt
-        cell.categoryIconLabel.font = UIFont.fontAwesome(ofSize: 40)
-        cell.categoryIconLabel.text = String.fontAwesomeIcon(name: .child)
         cell.categorynameLabel.text = currentpost.serviceCategory.name
         cell.profileThumbNail.layer.cornerRadius = 5
         cell.profileThumbNail.clipsToBounds = true
         self.downloadImage(url: URL(string: currentpost.user.profileThumbnailUrl)!, cell: cell)
+        
+        cell.categoryIconLabel.font = UIFont(name: "Nearask", size: 20)
+        cell.categoryIconLabel.text = ""
         
         cell.nameLabel.textColor = UIColor(red: 84/255, green: 84/255, blue: 84/255, alpha: 1.0)
         cell.titleLabel.textColor = UIColor(red: 84/255, green: 84/255, blue: 84/255, alpha: 1.0)

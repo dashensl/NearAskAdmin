@@ -8,10 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		4C0F5BD11EE9359100C7EDBF /* FontAwesome.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C0F5BD01EE9359100C7EDBF /* FontAwesome.framework */; };
-		4C0F5BD21EE9377100C7EDBF /* FontAwesome.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C0F5BD01EE9359100C7EDBF /* FontAwesome.framework */; };
 		4C0F5BD31EE9377100C7EDBF /* FontAwesome.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4C0F5BD01EE9359100C7EDBF /* FontAwesome.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4C0F5BD61EE93ABC00C7EDBF /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0F5BD51EE93ABC00C7EDBF /* User.swift */; };
 		4C0F5BD81EE952E800C7EDBF /* ServiceCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0F5BD71EE952E800C7EDBF /* ServiceCategory.swift */; };
+		4C0F5C141EE9598B00C7EDBF /* Nearask.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4C0F5BF61EE9590600C7EDBF /* Nearask.ttf */; };
 		4C1C79F61EE5436500897B3A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1C79F51EE5436500897B3A /* AppDelegate.swift */; };
 		4C1C79F81EE5436500897B3A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1C79F71EE5436500897B3A /* LoginViewController.swift */; };
 		4C1C79FB1EE5436500897B3A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C1C79F91EE5436500897B3A /* Main.storyboard */; };
@@ -62,6 +62,7 @@
 		4C0F5BD01EE9359100C7EDBF /* FontAwesome.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FontAwesome.framework; path = Carthage/Build/iOS/FontAwesome.framework; sourceTree = "<group>"; };
 		4C0F5BD51EE93ABC00C7EDBF /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		4C0F5BD71EE952E800C7EDBF /* ServiceCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceCategory.swift; sourceTree = "<group>"; };
+		4C0F5BF61EE9590600C7EDBF /* Nearask.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Nearask.ttf; sourceTree = "<group>"; };
 		4C1C79F21EE5436500897B3A /* nearaskAdmin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = nearaskAdmin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C1C79F51EE5436500897B3A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4C1C79F71EE5436500897B3A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -87,7 +88,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C0F5BD11EE9359100C7EDBF /* FontAwesome.framework in Frameworks */,
-				4C0F5BD21EE9377100C7EDBF /* FontAwesome.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -111,6 +111,7 @@
 		4C1C79E91EE5436500897B3A = {
 			isa = PBXGroup;
 			children = (
+				4C0F5BF61EE9590600C7EDBF /* Nearask.ttf */,
 				4C0F5BD01EE9359100C7EDBF /* FontAwesome.framework */,
 				4CBE74B41EE909B70016A37F /* models */,
 				4C1C79F41EE5436500897B3A /* nearaskAdmin */,
@@ -285,6 +286,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C0F5C141EE9598B00C7EDBF /* Nearask.ttf in Resources */,
 				4C1C7A001EE5436500897B3A /* LaunchScreen.storyboard in Resources */,
 				4C1C79FD1EE5436500897B3A /* Assets.xcassets in Resources */,
 				4C1C79FB1EE5436500897B3A /* Main.storyboard in Resources */,
