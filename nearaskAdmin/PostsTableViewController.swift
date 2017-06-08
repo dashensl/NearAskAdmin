@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FontAwesome
 
 class PostsTableViewController: UITableViewController {
 
@@ -32,7 +33,8 @@ class PostsTableViewController: UITableViewController {
         categories.append("3");
         categories.append("4");
         var request = URLRequest(url: URL(string: "http://api-dev.nearask.com/v1/admin/unreadPosts")!)
-        let postString = ["jobCategoryIds":categories, "limit": "8", "previousCreatedAt": ""] as [String : Any]
+        let postString = ["jobCategoryIds":categories, "limit": "8", "previousCreatedAt": "",
+                          "descending": false, "mediaSizes": ["small", "medium"]] as [String : Any]
         
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -54,9 +56,24 @@ class PostsTableViewController: UITableViewController {
                 let parseResult = try JSONSerialization.jsonObject(with: data, options:.allowFragments) as! [String: AnyObject]
                 let posts:[NSDictionary] = parseResult["posts"] as! [NSDictionary]
                 posts.forEach({ (element) in
-                    let temp: PostModel = PostModel(title: element.value(forKey: "title") as! String, formattedPrice: element.value(forKey: "formattedPrice") as! String, description: element.value(forKey: "description") as! String, userUpdatedAt: element.value(forKey: "userUpdatedAt") as! String)
+                    let loac = element.object(forKey: "location") as! NSDictionary
+                    let location = Location(name: loac.value(forKey: "name") as! String, latitude: loac.value(forKey: "latitude") as! Float, longitude: loac.value(forKey: "longitude") as! Float)
+                    
+                    let usOb = element.object(forKey: "user") as! NSDictionary
+                    let user = User(useruuid: usOb.value(forKey: "uuid") as! String,
+                                    username: usOb.value(forKey: "username") as! String,
+                                    profileThumbnailUrl: usOb.value(forKey: "profileThumbnailUrl") as! String)
+                    
+                    let caOb = element.object(forKey: "sourceCategory") as! NSDictionary
+                    let category = ServiceCategory(id: caOb.value(forKey: "id") as! NSNumber,
+                                                   name: caOb.value(forKey: "name") as! String,
+                                                   iconName: caOb.value(forKey: "iconName") as! String,
+                                                   backgroundUrl: caOb.value(forKey: "backgroundUrl") as! String)
+                    
+                    let temp: PostModel = PostModel(uuid: element.value(forKey: "uuid") as! String, title: element.value(forKey: "uuid") as! String, formattedPrice: element.value(forKey: "formattedPrice") as! String, description: element.value(forKey: "description") as! String, location: location, user: user, lastUpdateAt: element.value(forKey: "userUpdatedAt") as! String, serviceCategory: category)
                     self.dataSource?.append(temp)
                 })
+
                 self.tableView.reloadData()
             } catch {
                 print("could not parse data as json\(data)")
@@ -77,13 +94,50 @@ class PostsTableViewController: UITableViewController {
         return self.dataSource.count
     }
 
-
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:PostTableViewCell = self.tableView.dequeueReusableCell(withIdentifier: "postcell") as! PostTableViewCell
         let currentpost: PostModel = self.dataSource[indexPath.row]
-        cell.nameLabel.text = currentpost.title
-        cell.descrLabel.text = currentpost.description
+        cell.nameLabel.text = currentpost.user.username
+        cell.descLabel.text = currentpost.description
+        cell.priceLabel.text = currentpost.formattedPrice
+        cell.titleLabel.text = currentpost.title
+        cell.locationLabel.text = currentpost.location.name
+        cell.timeFromNowLabel.text = currentpost.lastUpdateAt
+        cell.categoryIconLabel.font = UIFont.fontAwesome(ofSize: 40)
+        cell.categoryIconLabel.text = String.fontAwesomeIcon(name: .child)
+        cell.categorynameLabel.text = currentpost.serviceCategory.name
+        cell.profileThumbNail.layer.cornerRadius = 5
+        cell.profileThumbNail.clipsToBounds = true
+        self.downloadImage(url: URL(string: currentpost.user.profileThumbnailUrl)!, cell: cell)
+        
+        cell.nameLabel.textColor = UIColor(red: 84/255, green: 84/255, blue: 84/255, alpha: 1.0)
+        cell.titleLabel.textColor = UIColor(red: 84/255, green: 84/255, blue: 84/255, alpha: 1.0)
+        cell.descLabel.textColor = UIColor(red: 97/255, green: 97/255, blue: 97/255, alpha: 1.0)
+        cell.categoryIconLabel.textColor = UIColor(red: 84/255, green: 153/255, blue: 219/255, alpha: 1.0)
+        cell.categorynameLabel.textColor = UIColor(red: 84/255, green: 153/255, blue: 219/255, alpha: 1.0)
+        cell.priceLabel.textColor = UIColor(red: 84/255, green: 153/255, blue: 219/255, alpha: 1.0)
+        cell.descLabel.sizeToFit()
+        
+//        rgb 84 153 219
         return cell
+    }
+    
+    func downloadImage(url: URL, cell: PostTableViewCell) {
+//        print("Download Started")
+        getDataFromUrl(url: url) { (data, response, error)  in
+            guard let data = data, error == nil else { return }
+//            print(response?.suggestedFilename ?? url.lastPathComponent)
+//            print("Download Finished")
+            DispatchQueue.main.async() { () -> Void in
+                cell.profileThumbNail.image = UIImage(data: data)
+            }
+        }
+    }
+    func getDataFromUrl(url: URL, completion: @escaping (_ data: Data?, _  response: URLResponse?, _ error: Error?) -> Void) {
+        URLSession.shared.dataTask(with: url) {
+            (data, response, error) in
+            completion(data, response, error)
+            }.resume()
     }
  
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

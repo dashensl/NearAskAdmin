@@ -2,26 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSAppTransportSecurity</key>
-	<dict>
-		<key>NSAllowsArbitraryLoads</key>
-		<true/>
-	</dict>
-	<key>UserList</key>
-	<array>
-		<dict>
-			<key>username</key>
-			<string>addison@aporigin.com</string>
-			<key>password</key>
-			<string>654321</string>
-		</dict>
-		<dict>
-			<key>username</key>
-			<string>shiling@aporigin.com</string>
-			<key>password</key>
-			<string>123456</string>
-		</dict>
-	</array>
+	<key>UIAppFonts</key>
+	<array/>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
@@ -40,6 +22,11 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
@@ -51,8 +38,6 @@
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
@@ -60,6 +45,21 @@
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
+	<key>UserList</key>
+	<array>
+		<dict>
+			<key>password</key>
+			<string>654321</string>
+			<key>username</key>
+			<string>addison@aporigin.com</string>
+		</dict>
+		<dict>
+			<key>password</key>
+			<string>123456</string>
+			<key>username</key>
+			<string>shiling@aporigin.com</string>
+		</dict>
 	</array>
 </dict>
 </plist>

@@ -10,15 +10,23 @@ import Foundation
 
 
 class PostModel {
+    let uuid: String!
     let title: String
     let formattedPrice: String
     let description: String
-    let userUpdatedAt: String
+    let location: Location
+    let user: User
+    let lastUpdateAt: String
+    let serviceCategory: ServiceCategory
     
-    init (title: String, formattedPrice: String, description: String, userUpdatedAt: String) {
+    init (uuid: String, title: String, formattedPrice: String, description: String, location: Location, user: User, lastUpdateAt: String, serviceCategory: ServiceCategory) {
+        self.uuid = uuid
         self.title = title
         self.formattedPrice = formattedPrice
         self.description = description
-        self.userUpdatedAt = userUpdatedAt
+        self.location = location
+        self.user = user
+        self.lastUpdateAt = lastUpdateAt
+        self.serviceCategory = serviceCategory
     }
 }
