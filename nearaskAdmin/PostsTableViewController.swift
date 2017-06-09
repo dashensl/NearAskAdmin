@@ -32,15 +32,10 @@ class PostsTableViewController: UITableViewController {
     }
     
     func fetchFeeds() {
-        var categories = [String]()
-        categories.append("1");
-        categories.append("2");
-        categories.append("3");
-        categories.append("4");
         var request = URLRequest(url: URL(string: "http://api-dev.nearask.com/v1/admin/unreadPosts")!)
-        let postString = ["jobCategoryIds":categories, "limit": "8", "previousCreatedAt": "",
-                          "descending": false, "mediaSizes": ["small", "medium"]] as [String : Any]
-        
+//        let postString = ["jobCategoryIds": ServiceCategory.getAllCategories(), "limit": "8", "previousCreatedAt": "",
+//                          "descending": true, "mediaSizes": ["small", "medium"]] as [String : Any]
+        let postString = ["jobCategoryIds": ServiceCategory.getAllCategories()]
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("application/json", forHTTPHeaderField: "Accept")
@@ -75,7 +70,21 @@ class PostsTableViewController: UITableViewController {
                                                    iconName: caOb.value(forKey: "iconName") as! String,
                                                    backgroundUrl: caOb.value(forKey: "backgroundUrl") as! String)
                     
-                    let temp: PostModel = PostModel(uuid: element.value(forKey: "uuid") as! String, title: element.value(forKey: "uuid") as! String, formattedPrice: element.value(forKey: "formattedPrice") as! String, description: element.value(forKey: "description") as! String, location: location, user: user, lastUpdateAt: element.value(forKey: "userUpdatedAt") as! String, serviceCategory: category)
+                    var mediaArray = [Media]()
+                    let meOb = element.object(forKey: "media") as! [NSDictionary]
+                    
+                    meOb.forEach({ (element) in
+                        var placeholderurl = ""
+                        let mtypeid = element.value(forKey: "mediaTypeId") as! NSNumber
+                        let presignedUrls = element.value(forKey: "presignedUrls") as! [NSDictionary]
+                        let url = presignedUrls[0].value(forKey: "url") as! NSString
+                        if presignedUrls.count > 1 {
+                            placeholderurl = presignedUrls[1].value(forKey: "url") as! String
+                        }
+                         mediaArray.append(Media(mediaTypeId: mtypeid, url: url as String, placeholderUrl: placeholderurl))
+                    })
+                    
+                    let temp: PostModel = PostModel(uuid: element.value(forKey: "uuid") as! String, title: element.value(forKey: "uuid") as! String, formattedPrice: element.value(forKey: "formattedPrice") as! String, description: element.value(forKey: "description") as! String, location: location, user: user, lastUpdateAt: element.value(forKey: "userUpdatedAt") as! String, serviceCategory: category, medias: mediaArray)
                     self.dataSource?.append(temp)
                 })
 
@@ -100,9 +109,10 @@ class PostsTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell:PostTableViewCell = self.tableView.dequeueReusableCell(withIdentifier: "postcell") as! PostTableViewCell
+//        let cell:PostTableViewCell = self.tableView.dequeueReusableCell(withIdentifier: "postcell") as! PostTableViewCell
+        let cell:PostTableViewCell = tableView.dequeueReusableCell(withIdentifier: "postcell", for: indexPath) as! PostTableViewCell
         let currentpost: PostModel = self.dataSource[indexPath.row]
-        cell.nameLabel.text = currentpost.user.username
+        cell.nameLabel.text = currentpost.user.username + "     " + String(currentpost.medias.count)
         cell.descLabel.text = currentpost.description
         cell.priceLabel.text = currentpost.formattedPrice
         cell.titleLabel.text = currentpost.title
@@ -125,8 +135,10 @@ class PostsTableViewController: UITableViewController {
         cell.categorynameLabel.textColor = UIColor(red: 84/255, green: 153/255, blue: 219/255, alpha: 1.0)
         cell.priceLabel.textColor = UIColor(red: 84/255, green: 153/255, blue: 219/255, alpha: 1.0)
         cell.descLabel.sizeToFit()
-        
-//        rgb 84 153 219
+
+        if (currentpost.medias.count > 0) {
+            print(currentpost.medias[0].url)
+        }
         return cell
     }
     

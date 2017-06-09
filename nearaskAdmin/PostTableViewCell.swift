@@ -20,6 +20,9 @@ class PostTableViewCell: UITableViewCell {
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var categorynameLabel: UILabel!
+    @IBOutlet weak var mediaView: UIView!
+    @IBOutlet weak var mediaHeightAnchor: NSLayoutConstraint!
+    @IBOutlet weak var desciptionBottomMarginConstrain: NSLayoutConstraint!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

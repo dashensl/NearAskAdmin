@@ -16,13 +16,6 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
-        
-        let fontFamilyNames = UIFont.familyNames
-        for familyName in fontFamilyNames {
-            let names = UIFont.fontNames(forFamilyName: familyName )
-            print("Font == \(familyName) \(names)")
-        }
     }
 
     override func didReceiveMemoryWarning() {
