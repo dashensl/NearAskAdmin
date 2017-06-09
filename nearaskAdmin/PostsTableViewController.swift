@@ -13,8 +13,13 @@ class PostsTableViewController: UITableViewController {
 
     var dataSource: [PostModel]!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 140
+        
         self.dataSource = [PostModel]()
         self.tableView.delegate = self
         self.fetchFeeds()
@@ -101,15 +106,17 @@ class PostsTableViewController: UITableViewController {
         cell.descLabel.text = currentpost.description
         cell.priceLabel.text = currentpost.formattedPrice
         cell.titleLabel.text = currentpost.title
-        cell.locationLabel.text = currentpost.location.name
-        cell.timeFromNowLabel.text = currentpost.lastUpdateAt
+        cell.locationLabel.font = UIFont.fontAwesome(ofSize: 12)
+        cell.locationLabel.text = String.fontAwesomeIcon(name: .mapMarker) + " " + currentpost.location.name
+        cell.timeFromNowLabel.font = UIFont.fontAwesome(ofSize: 12)
+        cell.timeFromNowLabel.text = String.fontAwesomeIcon(name: .clockO) + " " + currentpost.lastUpdateAt
         cell.categorynameLabel.text = currentpost.serviceCategory.name
         cell.profileThumbNail.layer.cornerRadius = 5
         cell.profileThumbNail.clipsToBounds = true
         self.downloadImage(url: URL(string: currentpost.user.profileThumbnailUrl)!, cell: cell)
         
-        cell.categoryIconLabel.font = UIFont(name: "Nearask", size: 20)
-        cell.categoryIconLabel.text = ""
+        cell.categoryIconLabel.font = UIFont(name: "Nearask", size: 24)
+        cell.categoryIconLabel.text = ServiceCategory.getIconBycategoryname(catid: currentpost.serviceCategory.id)
         
         cell.nameLabel.textColor = UIColor(red: 84/255, green: 84/255, blue: 84/255, alpha: 1.0)
         cell.titleLabel.textColor = UIColor(red: 84/255, green: 84/255, blue: 84/255, alpha: 1.0)
