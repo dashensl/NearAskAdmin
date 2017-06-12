@@ -136,9 +136,6 @@ class PostsTableViewController: UITableViewController {
         cell.priceLabel.textColor = UIColor(red: 84/255, green: 153/255, blue: 219/255, alpha: 1.0)
         cell.descLabel.sizeToFit()
 
-        if (currentpost.medias.count > 0) {
-            print(currentpost.medias[0].url)
-        }
         return cell
     }
     
