@@ -19,12 +19,10 @@
 		4C1C7A001EE5436500897B3A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C1C79FE1EE5436500897B3A /* LaunchScreen.storyboard */; };
 		4C1C7A0B1EE5436600897B3A /* nearaskAdminTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1C7A0A1EE5436600897B3A /* nearaskAdminTests.swift */; };
 		4C1C7A161EE5436600897B3A /* nearaskAdminUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1C7A151EE5436600897B3A /* nearaskAdminUITests.swift */; };
-		4C44284A1EE7CF6700B2EE04 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4428491EE7CF6700B2EE04 /* PostTableViewCell.swift */; };
+		4C6818FC1EEFEB0C00A9A690 /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C6818FB1EEFEB0C00A9A690 /* SDWebImage.framework */; };
+		4C6818FD1EEFEB2200A9A690 /* SDWebImage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4C6818FB1EEFEB0C00A9A690 /* SDWebImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4C98EF431EEE854C0036043A /* serviceFeed.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C98EF421EEE854C0036043A /* serviceFeed.xib */; };
 		4C98EF451EEE856B0036043A /* serviceFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C98EF441EEE856B0036043A /* serviceFeed.swift */; };
-		4C98EF471EEE89500036043A /* mediaGallery.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C98EF461EEE89500036043A /* mediaGallery.xib */; };
-		4C98EF491EEE89610036043A /* mediaGallery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C98EF481EEE89610036043A /* mediaGallery.swift */; };
-		4C9B640E1EE5612300662C7A /* PostsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9B640D1EE5612300662C7A /* PostsTableViewController.swift */; };
 		4CBBA4C51EEE4C9F00F42CA3 /* FeedsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBBA4C41EEE4C9F00F42CA3 /* FeedsTableViewController.swift */; };
 		4CBE74B61EE909CA0016A37F /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBE74B51EE909CA0016A37F /* Location.swift */; };
 		4CBE74B71EE909CA0016A37F /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBE74B51EE909CA0016A37F /* Location.swift */; };
@@ -57,6 +55,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				4C6818FD1EEFEB2200A9A690 /* SDWebImage.framework in Embed Frameworks */,
 				4C0F5BD31EE9377100C7EDBF /* FontAwesome.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -82,12 +81,9 @@
 		4C1C7A111EE5436600897B3A /* nearaskAdminUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = nearaskAdminUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C1C7A151EE5436600897B3A /* nearaskAdminUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = nearaskAdminUITests.swift; sourceTree = "<group>"; };
 		4C1C7A171EE5436600897B3A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4C4428491EE7CF6700B2EE04 /* PostTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PostTableViewCell.swift; path = nearaskAdmin/PostTableViewCell.swift; sourceTree = "<group>"; };
+		4C6818FB1EEFEB0C00A9A690 /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDWebImage.framework; path = Carthage/Build/iOS/SDWebImage.framework; sourceTree = "<group>"; };
 		4C98EF421EEE854C0036043A /* serviceFeed.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = serviceFeed.xib; sourceTree = "<group>"; };
 		4C98EF441EEE856B0036043A /* serviceFeed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = serviceFeed.swift; sourceTree = "<group>"; };
-		4C98EF461EEE89500036043A /* mediaGallery.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = mediaGallery.xib; sourceTree = "<group>"; };
-		4C98EF481EEE89610036043A /* mediaGallery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = mediaGallery.swift; sourceTree = "<group>"; };
-		4C9B640D1EE5612300662C7A /* PostsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PostsTableViewController.swift; path = nearaskAdmin/PostsTableViewController.swift; sourceTree = "<group>"; };
 		4CBBA4C41EEE4C9F00F42CA3 /* FeedsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedsTableViewController.swift; sourceTree = "<group>"; };
 		4CBE74B51EE909CA0016A37F /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		4CCC19D31EEA5AD300438CB7 /* Media.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Media.swift; sourceTree = "<group>"; };
@@ -99,6 +95,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C6818FC1EEFEB0C00A9A690 /* SDWebImage.framework in Frameworks */,
 				4C0F5BD11EE9359100C7EDBF /* FontAwesome.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -124,8 +121,8 @@
 			isa = PBXGroup;
 			children = (
 				4C98EF411EEE84E90036043A /* feeds */,
-				4CEE10261EEE679600F3735C /* backup */,
 				4C0F5BF61EE9590600C7EDBF /* Nearask.ttf */,
+				4C6818FB1EEFEB0C00A9A690 /* SDWebImage.framework */,
 				4C0F5BD01EE9359100C7EDBF /* FontAwesome.framework */,
 				4CBE74B41EE909B70016A37F /* models */,
 				4C1C79F41EE5436500897B3A /* nearaskAdmin */,
@@ -182,8 +179,6 @@
 			children = (
 				4C98EF421EEE854C0036043A /* serviceFeed.xib */,
 				4C98EF441EEE856B0036043A /* serviceFeed.swift */,
-				4C98EF461EEE89500036043A /* mediaGallery.xib */,
-				4C98EF481EEE89610036043A /* mediaGallery.swift */,
 			);
 			name = feeds;
 			sourceTree = "<group>";
@@ -198,15 +193,6 @@
 				4CCC19D31EEA5AD300438CB7 /* Media.swift */,
 			);
 			name = models;
-			sourceTree = "<group>";
-		};
-		4CEE10261EEE679600F3735C /* backup */ = {
-			isa = PBXGroup;
-			children = (
-				4C4428491EE7CF6700B2EE04 /* PostTableViewCell.swift */,
-				4C9B640D1EE5612300662C7A /* PostsTableViewController.swift */,
-			);
-			name = backup;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -321,7 +307,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C98EF431EEE854C0036043A /* serviceFeed.xib in Resources */,
-				4C98EF471EEE89500036043A /* mediaGallery.xib in Resources */,
 				4C0F5C141EE9598B00C7EDBF /* Nearask.ttf in Resources */,
 				4C1C7A001EE5436500897B3A /* LaunchScreen.storyboard in Resources */,
 				4C1C79FD1EE5436500897B3A /* Assets.xcassets in Resources */,
@@ -351,12 +336,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C1C79F81EE5436500897B3A /* LoginViewController.swift in Sources */,
-				4C98EF491EEE89610036043A /* mediaGallery.swift in Sources */,
 				4CBBA4C51EEE4C9F00F42CA3 /* FeedsTableViewController.swift in Sources */,
 				4C98EF451EEE856B0036043A /* serviceFeed.swift in Sources */,
 				4CF8EBC81EE65E5D00694E76 /* PostModel.swift in Sources */,
-				4C44284A1EE7CF6700B2EE04 /* PostTableViewCell.swift in Sources */,
-				4C9B640E1EE5612300662C7A /* PostsTableViewController.swift in Sources */,
 				4CBE74B61EE909CA0016A37F /* Location.swift in Sources */,
 				4CCC19D41EEA5AD300438CB7 /* Media.swift in Sources */,
 				4C1C79F61EE5436500897B3A /* AppDelegate.swift in Sources */,

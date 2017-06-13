@@ -65,8 +65,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hQr-54-tix" customClass="mediaGallery" customModule="nearaskAdmin" customModuleProvider="target">
-                                <rect key="frame" x="11" y="180.5" width="352" height="107.5"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hQr-54-tix">
+                                <rect key="frame" x="8" y="180.5" width="358" height="107.5"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="celementi ave 3" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aKx-0L-wZF">
                                 <rect key="frame" x="82" y="157.5" width="89" height="15"/>
@@ -109,7 +109,7 @@
                             <constraint firstAttribute="trailing" secondItem="EFy-0P-mqK" secondAttribute="trailing" constant="10" id="ibh-bF-YXI"/>
                             <constraint firstItem="0I4-9D-e9w" firstAttribute="top" secondItem="NbZ-Yj-BWj" secondAttribute="top" id="jIv-kb-tvx"/>
                             <constraint firstItem="gxP-wa-xjC" firstAttribute="centerX" secondItem="xzz-IS-4jR" secondAttribute="centerX" id="jiR-OZ-psm"/>
-                            <constraint firstItem="hQr-54-tix" firstAttribute="leading" secondItem="XVm-fj-75h" secondAttribute="leading" constant="11" id="kxk-CR-yIc"/>
+                            <constraint firstItem="hQr-54-tix" firstAttribute="leading" secondItem="XVm-fj-75h" secondAttribute="leading" constant="8" id="kxk-CR-yIc"/>
                             <constraint firstItem="xzz-IS-4jR" firstAttribute="top" secondItem="NbZ-Yj-BWj" secondAttribute="bottom" constant="8" id="o7K-nb-tFM"/>
                             <constraint firstItem="EFy-0P-mqK" firstAttribute="top" secondItem="0I4-9D-e9w" secondAttribute="bottom" constant="3" id="pHT-7r-GaA"/>
                             <constraint firstItem="YjD-OP-s77" firstAttribute="leading" secondItem="NbZ-Yj-BWj" secondAttribute="trailing" constant="22" id="r55-IS-bae"/>
@@ -130,13 +130,14 @@
                 <outlet property="categorynameLabel" destination="gxP-wa-xjC" id="wyK-XB-lGD"/>
                 <outlet property="descLabel" destination="YjD-OP-s77" id="rMH-bN-VBA"/>
                 <outlet property="locationLabel" destination="aKx-0L-wZF" id="6xc-gm-1eM"/>
+                <outlet property="mediaGallery" destination="hQr-54-tix" id="l3P-P6-a86"/>
                 <outlet property="nameLabel" destination="0I4-9D-e9w" id="GvD-qe-7r3"/>
                 <outlet property="priceLabel" destination="LUM-1Y-eQE" id="HrO-hE-HtE"/>
                 <outlet property="profileThumbNail" destination="NbZ-Yj-BWj" id="RK0-i1-Dkb"/>
                 <outlet property="timeFromNowLabel" destination="EFy-0P-mqK" id="0bS-Ak-W1R"/>
                 <outlet property="titleLabel" destination="Pzd-mi-CHy" id="8pd-jU-ReP"/>
             </connections>
-            <point key="canvasLocation" x="-228" y="-284"/>
+            <point key="canvasLocation" x="-154" y="-291"/>
         </tableViewCell>
     </objects>
     <resources>

@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import FontAwesome
 class FeedsTableViewController: UITableViewController {
     
     var dataSource: [PostModel]!
@@ -19,7 +19,6 @@ class FeedsTableViewController: UITableViewController {
         
         let nib = UINib(nibName: "serviceFeed", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "serviceFeed")
-        
     }
 
 
@@ -36,8 +35,9 @@ class FeedsTableViewController: UITableViewController {
         let feed = tableView.dequeueReusableCell(withIdentifier: "serviceFeed", for: indexPath) as! serviceFeed
         
         let currentpost: PostModel = self.dataSource[indexPath.row]
+        feed.setupMedia(medias: currentpost.medias, row: indexPath.row)
         feed.nameLabel.text = currentpost.user.username + "     " + String(currentpost.medias.count)
-        feed.descLabel.text = currentpost.description + "qwf iohqw hqgiuhqe gihqeiug qeiughqieghqe"
+        feed.descLabel.text = currentpost.description
         feed.priceLabel.text = currentpost.formattedPrice
         feed.titleLabel.text = currentpost.title
         feed.locationLabel.font = UIFont.fontAwesome(ofSize: 12)
@@ -63,7 +63,19 @@ class FeedsTableViewController: UITableViewController {
         return feed
     }
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 200
+        let currentpost: PostModel = self.dataSource[indexPath.row]
+        let label: UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: 300, height: 100))
+        label.numberOfLines = 0;
+        label.text = currentpost.description
+        label.sizeToFit()
+        let labelHeight = label.frame.height
+        var mediaHeight = 0
+        if (currentpost.medias.count < 3 && currentpost.medias.count > 0) {
+            mediaHeight = 200
+        } else if currentpost.medias.count > 2{
+            mediaHeight = 320
+        }
+        return CGFloat(mediaHeight+130) + labelHeight
     }
     
     func downloadImage(url: URL, imageview: UIImageView) {
@@ -134,7 +146,7 @@ class FeedsTableViewController: UITableViewController {
                         mediaArray.append(Media(mediaTypeId: mtypeid, url: url as String, placeholderUrl: placeholderurl))
                     })
                     
-                    let temp: PostModel = PostModel(uuid: element.value(forKey: "uuid") as! String, title: element.value(forKey: "uuid") as! String, formattedPrice: element.value(forKey: "formattedPrice") as! String, description: element.value(forKey: "description") as! String, location: location, user: user, lastUpdateAt: element.value(forKey: "userUpdatedAt") as! String, serviceCategory: category, medias: mediaArray)
+                    let temp: PostModel = PostModel(uuid: element.value(forKey: "uuid") as! String, title: element.value(forKey: "title") as! String, formattedPrice: element.value(forKey: "formattedPrice") as! String, description: element.value(forKey: "description") as! String, location: location, user: user, lastUpdateAt: element.value(forKey: "userUpdatedAt") as! String, serviceCategory: category, medias: mediaArray)
                     self.dataSource?.append(temp)
                 })
                 
