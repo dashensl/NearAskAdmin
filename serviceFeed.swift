@@ -8,7 +8,7 @@
 
 import UIKit
 
-class serviceFeed: UIView {
+class serviceFeed: UITableViewCell {
 
 
     @IBOutlet weak var profileThumbNail: UIImageView!

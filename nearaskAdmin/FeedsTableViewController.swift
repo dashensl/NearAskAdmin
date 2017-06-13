@@ -16,6 +16,10 @@ class FeedsTableViewController: UITableViewController {
         super.viewDidLoad()
         self.dataSource = [PostModel]()
         self.fetchFeeds()
+        
+        let nib = UINib(nibName: "serviceFeed", bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: "serviceFeed")
+        
     }
 
 
@@ -29,9 +33,7 @@ class FeedsTableViewController: UITableViewController {
 
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        let feed = Bundle.main.loadNibNamed("serviceFeed", owner: self, options: nil)?.first as! serviceFeed
-        cell.backgroundView = feed
+        let feed = tableView.dequeueReusableCell(withIdentifier: "serviceFeed", for: indexPath) as! serviceFeed
         
         let currentpost: PostModel = self.dataSource[indexPath.row]
         feed.nameLabel.text = currentpost.user.username + "     " + String(currentpost.medias.count)
@@ -58,7 +60,7 @@ class FeedsTableViewController: UITableViewController {
         feed.priceLabel.textColor = UIColor(red: 84/255, green: 153/255, blue: 219/255, alpha: 1.0)
         feed.descLabel.sizeToFit()
         
-        return cell
+        return feed
     }
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 200
