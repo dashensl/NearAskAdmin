@@ -12,11 +12,12 @@ import FontAwesome
 class FeedsTableViewController: UITableViewController {
     
     var dataSource: [PostModel]!
+    var last_cursor:String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.dataSource = [PostModel]()
-        self.fetchFeeds()
+        self.fetchFeeds(previousCreatedAt: "")
         
         let nib = UINib(nibName: "serviceFeed", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "serviceFeed")
@@ -36,7 +37,6 @@ class FeedsTableViewController: UITableViewController {
         let feed = tableView.dequeueReusableCell(withIdentifier: "serviceFeed", for: indexPath) as! serviceFeed
         
         let currentpost: PostModel = self.dataSource[indexPath.row]
-        print("currpost === \(currentpost.uuid) \(indexPath.row)")
         feed.setupMedia(medias: currentpost.medias, row: indexPath.row, target: feed)
         feed.nameLabel.text = currentpost.user.username + "     " + String(currentpost.medias.count)
         feed.descLabel.text = currentpost.description
@@ -45,7 +45,7 @@ class FeedsTableViewController: UITableViewController {
         feed.locationLabel.font = UIFont.fontAwesome(ofSize: 12)
         feed.locationLabel.text = String.fontAwesomeIcon(name: .mapMarker) + " " + currentpost.location.name
         feed.timeFromNowLabel.font = UIFont.fontAwesome(ofSize: 12)
-        feed.timeFromNowLabel.text = String.fontAwesomeIcon(name: .clockO) + " " + currentpost.lastUpdateAt
+        feed.timeFromNowLabel.text = String.fontAwesomeIcon(name: .clockO) + " " + currentpost.lastCreateAt
         feed.categorynameLabel.text = currentpost.serviceCategory.name
         feed.profileThumbNail.layer.cornerRadius = 5
         feed.profileThumbNail.sd_setImage(with: URL(string: currentpost.user.profileThumbnailUrl)!)
@@ -78,16 +78,27 @@ class FeedsTableViewController: UITableViewController {
         }
         return CGFloat(mediaHeight+130) + labelHeight
     }
+    
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.row == self.dataSource.count-1 {
+            self.fetchFeeds(previousCreatedAt: self.last_cursor)
+        }
+    }
+    
+    
+    
 
-    func fetchFeeds() {
+    func fetchFeeds(previousCreatedAt: String) {
         var request = URLRequest(url: URL(string: "http://api-dev.nearask.com/v1/admin/unreadPosts")!)
-        //        let postString = ["jobCategoryIds": ServiceCategory.getAllCategories(), "limit": "8", "previousCreatedAt": "",
-        //                          "descending": true, "mediaSizes": ["small", "medium"]] as [String : Any]
-        let postString = ["jobCategoryIds": ServiceCategory.getAllCategories()]
+        var postString = ["jobCategoryIds": ServiceCategory.getAllCategories(), "limit": "8"] as [String : Any]
+        if !previousCreatedAt.isEmpty{
+            postString["previousCreatedAt"] = previousCreatedAt
+        }
+        
+        print("fetch feed get called post string == \(postString)")
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("application/json", forHTTPHeaderField: "Accept")
-        request.addValue("application-idValue", forHTTPHeaderField: "secret-key")
         request.httpBody = try! JSONSerialization.data(withJSONObject: postString, options:.prettyPrinted)
         let session = URLSession.shared
         session.dataTask(with: request){ data, response, err in
@@ -104,6 +115,12 @@ class FeedsTableViewController: UITableViewController {
                 let parseResult = try JSONSerialization.jsonObject(with: data, options:.allowFragments) as! [String: AnyObject]
                 let posts:[NSDictionary] = parseResult["posts"] as! [NSDictionary]
                 posts.forEach({ (element) in
+                    
+                    var title = element.object(forKey: "title")
+                    if title == nil {
+                        title = "no title"
+                    }
+                    
                     let loac = element.object(forKey: "location") as! NSDictionary
                     let location = Location(name: loac.value(forKey: "name") as! String, latitude: loac.value(forKey: "latitude") as! Float, longitude: loac.value(forKey: "longitude") as! Float)
                     
@@ -132,11 +149,15 @@ class FeedsTableViewController: UITableViewController {
                         mediaArray.append(Media(mediaTypeId: mtypeid, url: url as String, placeholderUrl: placeholderurl))
                     })
                     
-                    let temp: PostModel = PostModel(uuid: element.value(forKey: "uuid") as! String, title: element.value(forKey: "title") as! String, formattedPrice: element.value(forKey: "formattedPrice") as! String, description: element.value(forKey: "description") as! String, location: location, user: user, lastUpdateAt: element.value(forKey: "userUpdatedAt") as! String, serviceCategory: category, medias: mediaArray)
+                    let temp: PostModel = PostModel(uuid: element.value(forKey: "uuid") as! String, title: title as! String, formattedPrice: element.value(forKey: "formattedPrice") as! String, description: element.value(forKey: "description") as! String, location: location, user: user, lastCreateAt: element.value(forKey: "createdAt") as! String, serviceCategory: category, medias: mediaArray)
+                    self.last_cursor = temp.lastCreateAt
+                    print("self.last cursor == \(self.last_cursor)")
                     self.dataSource?.append(temp)
                 })
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
                 
-                self.tableView.reloadData()
             } catch {
                 print("could not parse data as json\(data)")
                 return

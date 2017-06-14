@@ -16,18 +16,18 @@ class PostModel {
     let description: String
     let location: Location
     let user: User
-    let lastUpdateAt: String
+    let lastCreateAt: String
     let serviceCategory: ServiceCategory
     let medias: [Media]
     
-    init (uuid: String, title: String, formattedPrice: String, description: String, location: Location, user: User, lastUpdateAt: String, serviceCategory: ServiceCategory, medias: [Media]) {
+    init (uuid: String, title: String, formattedPrice: String, description: String, location: Location, user: User, lastCreateAt: String, serviceCategory: ServiceCategory, medias: [Media]) {
         self.uuid = uuid
         self.title = title
         self.formattedPrice = formattedPrice
         self.description = description
         self.location = location
         self.user = user
-        self.lastUpdateAt = lastUpdateAt
+        self.lastCreateAt = lastCreateAt
         self.serviceCategory = serviceCategory
         self.medias = medias
     }
