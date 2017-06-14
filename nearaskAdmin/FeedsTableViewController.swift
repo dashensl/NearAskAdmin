@@ -8,6 +8,7 @@
 
 import UIKit
 import FontAwesome
+
 class FeedsTableViewController: UITableViewController {
     
     var dataSource: [PostModel]!
@@ -35,7 +36,8 @@ class FeedsTableViewController: UITableViewController {
         let feed = tableView.dequeueReusableCell(withIdentifier: "serviceFeed", for: indexPath) as! serviceFeed
         
         let currentpost: PostModel = self.dataSource[indexPath.row]
-        feed.setupMedia(medias: currentpost.medias, row: indexPath.row)
+        print("currpost === \(currentpost.uuid) \(indexPath.row)")
+        feed.setupMedia(medias: currentpost.medias, row: indexPath.row, target: feed)
         feed.nameLabel.text = currentpost.user.username + "     " + String(currentpost.medias.count)
         feed.descLabel.text = currentpost.description
         feed.priceLabel.text = currentpost.formattedPrice
@@ -46,8 +48,7 @@ class FeedsTableViewController: UITableViewController {
         feed.timeFromNowLabel.text = String.fontAwesomeIcon(name: .clockO) + " " + currentpost.lastUpdateAt
         feed.categorynameLabel.text = currentpost.serviceCategory.name
         feed.profileThumbNail.layer.cornerRadius = 5
-        feed.profileThumbNail.clipsToBounds = true
-        self.downloadImage(url: URL(string: currentpost.user.profileThumbnailUrl)!, imageview: feed.profileThumbNail)
+        feed.profileThumbNail.sd_setImage(with: URL(string: currentpost.user.profileThumbnailUrl)!)
         
         feed.categoryIconLabel.font = UIFont(name: "Nearask", size: 24)
         feed.categoryIconLabel.text = ServiceCategory.getIconBycategoryname(catid: currentpost.serviceCategory.id)
@@ -76,21 +77,6 @@ class FeedsTableViewController: UITableViewController {
             mediaHeight = 320
         }
         return CGFloat(mediaHeight+130) + labelHeight
-    }
-    
-    func downloadImage(url: URL, imageview: UIImageView) {
-        getDataFromUrl(url: url) { (data, response, error)  in
-            guard let data = data, error == nil else { return }
-            DispatchQueue.main.async() { () -> Void in
-                imageview.image = UIImage(data: data)
-            }
-        }
-    }
-    func getDataFromUrl(url: URL, completion: @escaping (_ data: Data?, _  response: URLResponse?, _ error: Error?) -> Void) {
-        URLSession.shared.dataTask(with: url) {
-            (data, response, error) in
-            completion(data, response, error)
-            }.resume()
     }
 
     func fetchFeeds() {
